@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/kopexa-grc/x/compare/v1.0.0...v1.1.0) (2025-08-02)
+
+
+### Features
+
+* add Dependabot auto-merge functionality to CI workflow ([5bedfeb](https://github.com/kopexa-grc/x/commit/5bedfebf2c2e18102c8cee3448858fee8fec5fd1))
+* add multierr package with error handling utilities and tests ([3cfdc55](https://github.com/kopexa-grc/x/commit/3cfdc551a605bd6733116dd838acc5aaf8bbc5f8))
+
 ## 1.0.0 (2025-08-02)
 
 
