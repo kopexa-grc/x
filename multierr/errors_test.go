@@ -11,6 +11,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// Static test errors to avoid dynamic error creation
+var (
+	errTest1 = errors.New("1")
+)
+
 func TestMultiErr(t *testing.T) {
 	t.Run("add nil errors", func(t *testing.T) {
 		var e multierr.Errors
@@ -21,9 +26,9 @@ func TestMultiErr(t *testing.T) {
 
 	t.Run("add mixed errors", func(t *testing.T) {
 		var e multierr.Errors
-		e.Add(errors.New("1"), nil, errors.New("1"))
+		e.Add(errTest1, nil, errTest1)
 		var b multierr.Errors
-		b.Add(errors.New("1"))
+		b.Add(errTest1)
 		assert.Equal(t, b.Deduplicate(), e.Deduplicate())
 	})
 

@@ -24,7 +24,7 @@
 //	errs.Add(operation1())
 //	errs.Add(operation2())
 //	errs.Add(operation3())
-//	
+//
 //	if err := errs.Deduplicate(); err != nil {
 //	    log.Printf("Operations failed: %v", err)
 //	}
@@ -35,7 +35,7 @@
 //	filtered := errs.Filter(func(e error) bool {
 //	    return errors.Is(e, context.DeadlineExceeded)
 //	})
-//	
+//
 //	if !filtered.IsEmpty() {
 //	    log.Printf("Non-timeout errors: %v", filtered.Deduplicate())
 //	}
@@ -76,7 +76,7 @@ import (
 // Unwrap() (for Go 1.13+ error handling) methods.
 
 type withMessage struct {
-	cause error // underlying error being wrapped
+	cause error  // underlying error being wrapped
 	msg   string // additional context message
 }
 
@@ -132,12 +132,12 @@ func (w withMessage) Unwrap() error { return w.cause }
 //	        return multierr.Wrap(err, "failed to open configuration file")
 //	    }
 //	    defer file.Close()
-//	    
+//
 //	    // Process file...
 //	    if err := processData(file); err != nil {
 //	        return multierr.Wrap(err, "failed to process file data")
 //	    }
-//	    
+//
 //	    return nil
 //	}
 //
@@ -171,12 +171,12 @@ func Wrap(err error, message string) error {
 // Example usage:
 //
 //	var errs multierr.Errors
-//	
+//
 //	// Collect errors from multiple operations
 //	errs.Add(validateUser(user))
 //	errs.Add(validateAccount(account))
 //	errs.Add(validatePermissions(permissions))
-//	
+//
 //	// Check if any errors occurred
 //	if !errs.IsEmpty() {
 //	    return errs.Deduplicate()
@@ -203,18 +203,18 @@ type Errors struct {
 // Example:
 //
 //	var errs multierr.Errors
-//	
+//
 //	// Add individual errors
 //	errs.Add(operation1())
 //	errs.Add(operation2())
-//	
+//
 //	// Add multiple errors at once
 //	errs.Add(
 //	    validateName(name),
 //	    validateEmail(email),
 //	    validateAge(age),
 //	)
-//	
+//
 //	// Nil errors are safely ignored
 //	errs.Add(nil, someError, nil) // Only someError is added
 func (m *Errors) Add(err ...error) {
@@ -245,21 +245,21 @@ func (m *Errors) Add(err ...error) {
 //	errs.Add(errors.New("validation error"))
 //	errs.Add(context.DeadlineExceeded)
 //	errs.Add(errors.New("network error"))
-//	
+//
 //	// Filter out timeout errors
 //	nonTimeoutErrors := errs.Filter(func(e error) bool {
 //	    return errors.Is(e, context.DeadlineExceeded)
 //	})
-//	
+//
 //	// Filter out errors containing "validation"
 //	nonValidationErrors := errs.Filter(func(e error) bool {
 //	    return strings.Contains(e.Error(), "validation")
 //	})
-//	
+//
 //	// Filter by custom error types
 //	type NetworkError struct{ msg string }
 //	func (ne NetworkError) Error() string { return ne.msg }
-//	
+//
 //	nonNetworkErrors := errs.Filter(func(e error) bool {
 //	    var netErr NetworkError
 //	    return errors.As(e, &netErr)
@@ -300,7 +300,7 @@ func (m *Errors) Filter(f func(e error) bool) *Errors {
 //	var errs multierr.Errors
 //	errs.Add(errors.New("first error"))
 //	errs.Add(errors.New("second error"))
-//	
+//
 //	fmt.Printf("Operations failed:\n%s", errs.Error())
 //	// Output:
 //	// Operations failed:
@@ -346,10 +346,10 @@ func (m *Errors) Error() string {
 //	errs.Add(errors.New("duplicate error"))
 //	errs.Add(errors.New("unique error"))
 //	errs.Add(errors.New("duplicate error")) // Same message as first
-//	
+//
 //	result := errs.Deduplicate()
 //	// result contains only 2 unique errors
-//	
+//
 //	// Handle the result
 //	if result != nil {
 //	    log.Printf("Unique errors found: %v", result)
@@ -396,18 +396,18 @@ func (m Errors) Deduplicate() error {
 // Example:
 //
 //	var errs multierr.Errors
-//	
+//
 //	// Check before collecting errors
 //	fmt.Println(errs.IsEmpty()) // true
-//	
+//
 //	errs.Add(errors.New("something went wrong"))
 //	fmt.Println(errs.IsEmpty()) // false
-//	
+//
 //	// Use in conditional logic
 //	if !errs.IsEmpty() {
 //	    return errs.Deduplicate()
 //	}
-//	
+//
 //	// Safe with nil pointers
 //	var nilErrs *multierr.Errors
 //	fmt.Println(nilErrs.IsEmpty()) // true (no panic)
@@ -416,15 +416,15 @@ func (m Errors) Deduplicate() error {
 //
 //	func validateData(data *Data) error {
 //	    var errs multierr.Errors
-//	    
+//
 //	    errs.Add(validateName(data.Name))
 //	    errs.Add(validateEmail(data.Email))
 //	    errs.Add(validateAge(data.Age))
-//	    
+//
 //	    if errs.IsEmpty() {
 //	        return nil // All validations passed
 //	    }
-//	    
+//
 //	    return errs.Deduplicate()
 //	}
 func (m *Errors) IsEmpty() bool {
