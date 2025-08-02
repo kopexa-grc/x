@@ -45,9 +45,9 @@ jobs:
 
       - name: golangci-lint
         if: ${{ needs.detect-changes.outputs.lint == 'true' }}
-        uses: golangci/golangci-lint-action@v7
+        uses: golangci/golangci-lint-action@v8
         with:
-          version: v2.0
+          version: v2.1
           github-token: ${{ secrets.GITHUB_TOKEN }}
           only-new-issues: true
 
