@@ -74,7 +74,7 @@ jobs:
           echo '<?xml version="1.0" encoding="UTF-8"?><testsuites></testsuites>' > build/reports/test-unit.xml
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         if: success() || failure()
         with:
           name: Unit Test Results
