@@ -25,7 +25,7 @@ type Config struct {
 
 	// Skipper defines a function to skip the entire middleware for certain requests.
 	// If nil, middleware.DefaultSkipper is used (never skips).
-	// 
+	//
 	// Example:
 	//   Skipper: func(c echo.Context) bool {
 	//       return c.Path() == "/health" // Skip logging for health checks
@@ -185,12 +185,12 @@ func (c *Context) Logger() echo.Logger {
 //
 //	e := echo.New()
 //	logger := echolog.New(os.Stdout, echolog.WithTimestamp())
-//	
+//
 //	// Basic configuration
 //	e.Use(echolog.LoggingMiddleware(echolog.Config{
 //		Logger: logger,
 //	}))
-//	
+//
 //	// Advanced configuration with slow request detection
 //	e.Use(echolog.LoggingMiddleware(echolog.Config{
 //		Logger:              logger,

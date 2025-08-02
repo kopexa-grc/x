@@ -125,7 +125,7 @@ type (
 	}
 )
 
-func (h *Hook) Run(e *zerolog.Event, level zerolog.Level, message string) {
+func (h *Hook) Run(_ *zerolog.Event, level zerolog.Level, message string) {
 	h.logs = append(h.logs, HookLog{
 		level:   level,
 		message: message,
@@ -150,7 +150,7 @@ func TestWithHook(t *testing.T) {
 func TestWithHookFunc(t *testing.T) {
 	b := &bytes.Buffer{}
 	logs := make([]HookLog, 0, 2)
-	l := echolog.New(b, echolog.WithHookFunc(func(e *zerolog.Event, level zerolog.Level, message string) {
+	l := echolog.New(b, echolog.WithHookFunc(func(_ *zerolog.Event, level zerolog.Level, message string) {
 		logs = append(logs, HookLog{
 			level:   level,
 			message: message,

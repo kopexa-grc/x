@@ -77,7 +77,7 @@ func newOptions(log zerolog.Logger, setters []ConfigSetter) *Options {
 //
 //	// Set debug level for development
 //	logger := echolog.New(os.Stdout, echolog.WithLevel(log.DEBUG))
-//	
+//
 //	// Set error level for production
 //	logger := echolog.New(os.Stdout, echolog.WithLevel(log.ERROR))
 func WithLevel(level log.Lvl) ConfigSetter {
@@ -202,7 +202,7 @@ func WithCaller() ConfigSetter {
 //
 //	// Skip 2 frames to show the actual caller instead of wrapper functions
 //	logger := echolog.New(os.Stdout, echolog.WithCallerWithSkipFrameCount(2))
-//	
+//
 //	// When called from a wrapper function, this will show the original caller
 //	func logWrapper(msg string) {
 //		logger.Info(msg) // Shows caller of logWrapper, not logWrapper itself
@@ -230,7 +230,7 @@ func WithCallerWithSkipFrameCount(skipFrameCount int) ConfigSetter {
 //	// Add a component prefix
 //	logger := echolog.New(os.Stdout, echolog.WithPrefix("[AUTH]"))
 //	logger.Info("user login") // Output includes: "prefix":"[AUTH]"
-//	
+//
 //	// Add multiple context prefixes
 //	apiLogger := echolog.New(os.Stdout, echolog.WithPrefix("[API]"))
 //	dbLogger := echolog.New(os.Stdout, echolog.WithPrefix("[DB]"))
@@ -256,12 +256,12 @@ func WithPrefix(prefix string) ConfigSetter {
 //
 //	// Custom hook that adds hostname to all log entries
 //	type HostnameHook struct{}
-//	
+//
 //	func (h HostnameHook) Run(e *zerolog.Event, level zerolog.Level, msg string) {
 //		hostname, _ := os.Hostname()
 //		e.Str("hostname", hostname)
 //	}
-//	
+//
 //	logger := echolog.New(os.Stdout, echolog.WithHook(HostnameHook{}))
 func WithHook(hook zerolog.Hook) ConfigSetter {
 	return func(opts *Options) {
@@ -289,7 +289,7 @@ func WithHook(hook zerolog.Hook) ConfigSetter {
 //			e.Str("request_id", requestID)
 //		}
 //	}
-//	
+//
 //	logger := echolog.New(os.Stdout, echolog.WithHookFunc(hookFunc))
 func WithHookFunc(hook zerolog.HookFunc) ConfigSetter {
 	return func(opts *Options) {

@@ -17,7 +17,6 @@ linters:
     - revive
     - staticcheck
     - whitespace
-    - wsl_v5
   exclusions:
     generated: lax
     presets:

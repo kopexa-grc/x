@@ -558,7 +558,7 @@ func (l *Logger) Level() log.Lvl {
 //
 //	// Set to debug level for development
 //	logger.SetLevel(log.DEBUG)
-//	
+//
 //	// Set to error level for production
 //	logger.SetLevel(log.ERROR)
 func (l *Logger) SetLevel(level log.Lvl) {

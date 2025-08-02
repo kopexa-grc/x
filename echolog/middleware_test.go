@@ -18,6 +18,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// Common errors for testing
+var (
+	errTest = errors.New("test error")
+)
+
 func TestMiddleware(t *testing.T) {
 	t.Run("should not trigger error handler when HandleError is false", func(t *testing.T) {
 		var called bool
@@ -25,7 +30,7 @@ func TestMiddleware(t *testing.T) {
 
 		e.HTTPErrorHandler = func(err error, c echo.Context) {
 			called = true
-			c.JSON(http.StatusInternalServerError, err.Error())
+			_ = c.JSON(http.StatusInternalServerError, err.Error())
 		}
 		req := httptest.NewRequest(http.MethodGet, "/", nil)
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
@@ -34,8 +39,8 @@ func TestMiddleware(t *testing.T) {
 
 		m := echolog.LoggingMiddleware(echolog.Config{})
 
-		next := func(c echo.Context) error {
-			return errors.New("error")
+		next := func(_ echo.Context) error {
+			return errTest
 		}
 
 		handler := m(next)
@@ -51,7 +56,7 @@ func TestMiddleware(t *testing.T) {
 		e.HTTPErrorHandler = func(err error, c echo.Context) {
 			called = true
 
-			c.JSON(http.StatusInternalServerError, err.Error())
+			_ = c.JSON(http.StatusInternalServerError, err.Error())
 		}
 		req := httptest.NewRequest(http.MethodGet, "/", nil)
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
@@ -62,8 +67,8 @@ func TestMiddleware(t *testing.T) {
 			HandleError: true,
 		})
 
-		next := func(c echo.Context) error {
-			return errors.New("error")
+		next := func(_ echo.Context) error {
+			return errTest
 		}
 
 		handler := m(next)
@@ -85,12 +90,12 @@ func TestMiddleware(t *testing.T) {
 		l := echolog.New(b)
 		m := echolog.LoggingMiddleware(echolog.Config{
 			Logger: l,
-			Enricher: func(c echo.Context, logger zerolog.Context) zerolog.Context {
+			Enricher: func(_ echo.Context, logger zerolog.Context) zerolog.Context {
 				return logger.Str("test", "test")
 			},
 		})
 
-		next := func(c echo.Context) error {
+		next := func(_ echo.Context) error {
 			return nil
 		}
 
@@ -120,7 +125,7 @@ func TestMiddleware(t *testing.T) {
 		})
 
 		// Slow request should be logged at the escalated level
-		next := func(c echo.Context) error {
+		next := func(_ echo.Context) error {
 			time.Sleep(5 * time.Millisecond)
 			return nil
 		}
@@ -150,7 +155,7 @@ func TestMiddleware(t *testing.T) {
 		})
 
 		// Fast request should be logged at the default level
-		next := func(c echo.Context) error {
+		next := func(_ echo.Context) error {
 			time.Sleep(1 * time.Millisecond)
 			return nil
 		}
@@ -182,7 +187,7 @@ func TestMiddleware(t *testing.T) {
 			},
 		})
 
-		next := func(c echo.Context) error {
+		next := func(_ echo.Context) error {
 			return nil
 		}
 
