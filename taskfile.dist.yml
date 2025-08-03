@@ -51,8 +51,30 @@ tasks:
     desc: Prepare tools for the project
     cmds:
       - go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
-      - curl -1sLf https://gobinaries.com/evilmartians/lefthook/install | sh
-      
+      - go install github.com/evilmartians/lefthook@latest
+      - go install google.golang.org/protobuf/cmd/protoc-gen-go@latest # Ensure protoc-gen-go is installed
+      - go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest # Ensure protoc-gen-go-grpc is installed
+      - go install github.com/planetscale/vtprotobuf/cmd/protoc-gen-go-vtproto@latest # Ensure protoc-gen-go-vtproto is installed
+
+  prep:tools:protolint:
+    desc: Install Protolint
+    cmds:
+       - go install github.com/yoheimuta/protolint/cmd/protolint@latest
+
+  clean:proto:
+    desc: Clean up generated proto files
+    cmds:
+      - find . -not -path './.*' \( -name '*.ranger.go' -or -name '*.pb.go' -or -name '*.actions.go' -or -name '*-packr.go' -or -name '*.swagger.json' \) -delete
+
+  gen:
+    desc: Generate code for the project
+    cmds:
+      - task: gen:vault
+
+  gen:vault:
+    desc: Generate SDK code
+    cmds:
+      - go generate ./vault
 
   license:check:
     desc: Check license headers in source files

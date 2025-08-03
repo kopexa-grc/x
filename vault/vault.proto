@@ -1,0 +1,81 @@
+
+syntax = "proto3";
+
+package kopexa.vault.v1;
+option go_package = "github.com/kopexa-grc/x/vault";
+
+message SecretID {
+  string key = 1;
+}
+
+message Secret {
+  string key = 1;
+  string label = 2;
+  bytes data = 3;
+  SecretEncoding encoding = 4;
+}
+
+// protolint:disable:next ENUM_FIELD_NAMES_PREFIX 
+enum CredentialType {
+  // protolint:disable:next ENUM_FIELD_NAMES_ZERO_VALUE_END_WITH
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  undefined = 0;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  password = 1;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  private_key = 2;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  ssh_agent = 3;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  bearer = 4;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  credentials_query = 5;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  json = 6;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  aws_ec2_instance_connect = 7;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  aws_ec2_ssm_session = 8;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  pkcs12 = 9;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  env = 10;
+}
+
+// protolint:disable:next ENUM_FIELD_NAMES_PREFIX 
+// protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+enum SecretEncoding {
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  // protolint:disable:next ENUM_FIELD_NAMES_ZERO_VALUE_END_WITH
+  encoding_undefined = 0;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  encoding_json = 1;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  encoding_proto = 2;
+  // protolint:disable:next ENUM_FIELD_NAMES_UPPER_SNAKE_CASE
+  encoding_binary = 3;
+}
+
+
+// Credential holds authentication information
+message Credential {
+    string secret_id = 1;
+    CredentialType type = 2;
+    string user = 3;
+    bytes secret = 4;
+    reserved 5;
+
+    // for user convenience we define password, this allows yaml/json writers
+    string password = 21; 
+
+    // for user convenience we define private_key, this allows yaml/json writers
+    // to just embed the string representation, otherwise it would need to be 
+    // base64 encoded
+    string private_key = 22;
+
+    // for user convenience we define private_key_path which loads a local file 
+    // into the secret
+    string private_key_path = 23;
+
+    string env = 24;
+}
