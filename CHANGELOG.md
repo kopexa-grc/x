@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/kopexa-grc/x/compare/v1.1.0...v1.2.0) (2025-08-03)
+
+
+### Features
+
+* implement Redis client wrapper with configuration management and health checking ([3c48d92](https://github.com/kopexa-grc/x/commit/3c48d927c2bf4ac4b2caecb7ad6e30219f499afa))
+
 ## [1.1.0](https://github.com/kopexa-grc/x/compare/v1.0.0...v1.1.0) (2025-08-02)
 
 
