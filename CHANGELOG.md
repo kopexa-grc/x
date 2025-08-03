@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/kopexa-grc/x/compare/v1.2.0...v1.3.0) (2025-08-03)
+
+
+### Features
+
+* Add proto definitions for vault secrets and credentials ([4a8029c](https://github.com/kopexa-grc/x/commit/4a8029cb54d2c0f5afc693c00b8a1815636f1cd2))
+
 ## [1.2.0](https://github.com/kopexa-grc/x/compare/v1.1.0...v1.2.0) (2025-08-03)
 
 
