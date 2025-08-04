@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/kopexa-grc/x/compare/v1.3.0...v1.4.0) (2025-08-04)
+
+
+### Features
+
+* add integration test for echolog logger and update README with credits ([7226987](https://github.com/kopexa-grc/x/commit/7226987713a6b06297981ae7b03104be619aab86))
+* **logger:** Introduce comprehensive logging package with structured output ([ad19896](https://github.com/kopexa-grc/x/commit/ad198962488d12f21571387ce4aa2758525bff58))
+
+
+### Bug Fixes
+
+* **logger:** update file permissions for JSON and YAML dumps to be more restrictive ([959e90b](https://github.com/kopexa-grc/x/commit/959e90be8de24bcb41120a4d4dc95a1941fdd086))
+* **logger:** update file permissions for JSON and YAML dumps to be more restrictive ([d1f8a15](https://github.com/kopexa-grc/x/commit/d1f8a15474ba687c98b500a9bfb99c799f6d4463))
+
 ## [1.3.0](https://github.com/kopexa-grc/x/compare/v1.2.0...v1.3.0) (2025-08-03)
 
 
