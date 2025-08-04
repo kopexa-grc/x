@@ -505,7 +505,7 @@ func (l *Logger) Printj(j log.JSON) {
 //		fmt.Fprintf(writer, "Direct write to logger output")
 //	}
 func (l *Logger) Output() io.Writer {
-	return l.out
+	return l.log
 }
 
 // SetOutput changes the output destination for the logger.

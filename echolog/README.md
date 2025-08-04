@@ -2,6 +2,8 @@
 
 A powerful [Zerolog](https://github.com/rs/zerolog) wrapper for the [Echo](https://echo.labstack.com/) web framework that provides structured JSON logging with minimal performance overhead within [kopexa](https://kopexa.com)'s ecosystem.
 
+Credits: https://github.com/ziflex/lecho
+
 ## Features
 
 - **Full Echo Logger Interface Compatibility** - Drop-in replacement for Echo's default logger  
