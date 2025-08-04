@@ -36,7 +36,7 @@ func NewConsoleWriter(out io.Writer, compact bool) zerolog.Logger {
 	w.FormatErrFieldValue = consoleDefaultFormatErrFieldValue()
 	w.FormatCaller = consoleDefaultFormatCaller()
 	w.FormatMessage = consoleDefaultFormatMessage
-	w.FormatTimestamp = func(i interface{}) string { return "" }
+	w.FormatTimestamp = func(_ interface{}) string { return "" }
 
 	return log.Output(w)
 }

@@ -60,7 +60,7 @@ func DebugDumpJSON(name string, obj interface{}) {
 		log.Error().Err(err).Msg("failed to dump JSON")
 	}
 
-	err = os.WriteFile(DumpLocal+name+".json", []byte(raw), 0o644)
+	err = os.WriteFile(DumpLocal+name+".json", []byte(raw), 0o600)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to dump JSON")
 	}
@@ -88,7 +88,7 @@ func DebugDumpYAML(name string, obj interface{}) {
 		log.Error().Err(err).Msg("failed to dump YAML")
 	}
 
-	err = os.WriteFile(DumpLocal+name+".yaml", []byte(raw), 0o644)
+	err = os.WriteFile(DumpLocal+name+".yaml", []byte(raw), 0o600)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to dump JSON")
 	}
