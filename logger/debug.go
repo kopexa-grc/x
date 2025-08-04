@@ -13,6 +13,10 @@ import (
 	"sigs.k8s.io/yaml"
 )
 
+const (
+	filePermissions = 0o644 // Read and write for owner, read for group and others
+)
+
 var DumpLocal string
 
 // DebugJSON prints a prettified JSON of the data to CLI on debug mode
@@ -60,7 +64,7 @@ func DebugDumpJSON(name string, obj interface{}) {
 		log.Error().Err(err).Msg("failed to dump JSON")
 	}
 
-	err = os.WriteFile(DumpLocal+name+".json", []byte(raw), 0o600)
+	err = os.WriteFile(DumpLocal+name+".json", []byte(raw), filePermissions)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to dump JSON")
 	}
@@ -88,7 +92,7 @@ func DebugDumpYAML(name string, obj interface{}) {
 		log.Error().Err(err).Msg("failed to dump YAML")
 	}
 
-	err = os.WriteFile(DumpLocal+name+".yaml", []byte(raw), 0o600)
+	err = os.WriteFile(DumpLocal+name+".yaml", []byte(raw), filePermissions)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to dump JSON")
 	}
