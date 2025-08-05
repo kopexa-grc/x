@@ -16,7 +16,7 @@ require (
 	github.com/hokaccha/go-prettyjson v0.0.0-20211117102719-0474bc63780f
 	github.com/labstack/echo/v4 v4.13.4
 	github.com/labstack/gommon v0.4.2
-	github.com/muesli/termenv v0.15.2
+	github.com/muesli/termenv v0.16.0
 	github.com/planetscale/vtprotobuf v0.6.0
 	github.com/redis/go-redis/v9 v9.11.0
 	github.com/rs/zerolog v1.34.0
