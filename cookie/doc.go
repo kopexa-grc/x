@@ -1,3 +1,6 @@
+// Copyright (c) Kopexa GmbH
+// SPDX-License-Identifier: BUSL-1.1
+
 // Package cookie provides utilities for creating and configuring HTTP cookies
 // with security best practices and flexible configuration options.
 //
