@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/kopexa-grc/x/compare/v1.4.0...v1.5.0) (2025-08-05)
+
+
+### Features
+
+* **cookie:** add cookie package with configuration options and security best practices ([e2c2daa](https://github.com/kopexa-grc/x/commit/e2c2daa03fea1064bf808f0fe3fa743697d81a2e))
+
+
+### Bug Fixes
+
+* **cookie:** add copyright and license information to cookie package files ([1aad2ac](https://github.com/kopexa-grc/x/commit/1aad2ac5c671fb0de7c0d1103dfeeeccf6aac83a))
+* **workflow:** update permissions to include write access for statuses ([23f0f89](https://github.com/kopexa-grc/x/commit/23f0f89c9c2960e7c7b1b260ab27f48a2af40d08))
+
 ## [1.4.0](https://github.com/kopexa-grc/x/compare/v1.3.0...v1.4.0) (2025-08-04)
 
 
