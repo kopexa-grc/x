@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/kopexa-grc/x/compare/v1.5.0...v1.6.0) (2025-08-06)
+
+
+### Features
+
+* **convert:** add JSONToDict and JSONToDictSlice functions with benchmarks and tests ([df04f90](https://github.com/kopexa-grc/x/commit/df04f90998a5ccb69225c77fefe47cbbca01f778))
+
 ## [1.5.0](https://github.com/kopexa-grc/x/compare/v1.4.0...v1.5.0) (2025-08-05)
 
 
