@@ -18,7 +18,7 @@ require (
 	github.com/labstack/gommon v0.4.2
 	github.com/muesli/termenv v0.16.0
 	github.com/planetscale/vtprotobuf v0.6.0
-	github.com/redis/go-redis/v9 v9.16.0
+	github.com/redis/go-redis/v9 v9.17.0
 	github.com/rs/zerolog v1.34.0
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/protobuf v1.36.10
